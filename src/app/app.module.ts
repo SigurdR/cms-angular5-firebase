@@ -10,13 +10,21 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { AppRoutingModule } from './app-routing-module';
 import { AfService } from './providers/af.service';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore'
+import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore';
+import { AppNavbarComponent } from './app-navbar/app-navbar.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { AdminPageComponent } from './admin-page/admin-page.component'
+import { AdminGuard } from './guards/admin.guard';
+import { SubscriberGuard } from './guards/subscriber.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
     PagesListComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    AppNavbarComponent,
+    HomePageComponent,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +34,7 @@ import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore
     AngularFireAuthModule,
     AngularFirestoreModule
   ],
-  providers: [AfService],
+  providers: [AfService, AdminGuard, SubscriberGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
