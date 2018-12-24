@@ -11,7 +11,8 @@ import {
     MatFormFieldModule,
     MatInputModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogModule
 } from '@angular/material';
 
 @NgModule({
@@ -29,7 +30,8 @@ import {
         MatFormFieldModule,
         MatInputModule,
         MatSortModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        MatDialogModule
     ],
     exports: [
         MatButtonModule,
@@ -42,7 +44,8 @@ import {
         MatFormFieldModule,
         MatInputModule,
         MatSortModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        MatDialogModule
     ]
   })
   export class MaterialModule { }

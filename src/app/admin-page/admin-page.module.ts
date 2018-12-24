@@ -8,6 +8,7 @@ import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 import { MenusComponent } from './menus/menus.component';
 import { PostsComponent } from './posts/posts.component';
 import { FormsModule } from '@angular/forms';
+import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
 
 
 
@@ -23,7 +24,9 @@ import { FormsModule } from '@angular/forms';
     AdminPageComponent,
     AppNavbarComponent,
     MenusComponent,
-    PostsComponent
-  ]
+    PostsComponent,
+    ConfirmationDialogComponent
+  ],
+  entryComponents: [ConfirmationDialogComponent]
 })
 export class AdminPageModule { }
