@@ -3,7 +3,8 @@ import { AngularFirestore } from 'angularfire2/firestore';
 
 export interface Post {
   title: ""
-  url: ""
+  menu_id: "",
+  content: ""
 }
 
 @Injectable()
@@ -11,7 +12,7 @@ export class PostsService {
 
   constructor(private  afs: AngularFirestore) { }
 
-  getMenus() {
+  getPosts() {
   
     return this.afs.collection("posts").snapshotChanges()
     .map( post => {
@@ -28,11 +29,11 @@ export class PostsService {
 
   }
 
-  deleteMenu(postId) {
+  deletePost(postId) {
     this.afs.doc('posts/'+postId).delete();
   }
 
-  updateMenu(postId, post: Post) {
+  updatePost(postId, post: Post) {
     this.afs.doc('posts/'+postId).update(post);
   }
 }
