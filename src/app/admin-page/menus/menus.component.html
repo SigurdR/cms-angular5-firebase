@@ -33,7 +33,7 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef mat-sort-header> </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <button mat-icon-button color="primary" (click)="editMenu(element.id)">
+        <button mat-icon-button color="primary" (click)="openEditDialog(element.id, element.title, element.url)">
           <mat-icon aria-label="edit">mode_edit</mat-icon>
         </button>
         <button mat-icon-button color="warn" (click)="openDialog(element.id)">

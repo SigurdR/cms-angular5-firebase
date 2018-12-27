@@ -3,6 +3,7 @@ import { MenusService, Menu } from '../../service/menus/menus.service';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ConfirmationDialogComponent } from '../shared/confirmation-dialog/confirmation-dialog.component';
+import { EditMenuComponent } from './edit-menu/edit-menu.component';
 
 @Component({
   selector: 'app-menus',
@@ -45,8 +46,8 @@ export class MenusComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
 
-  editMenu() {
-    // this.menus.addMenu(this.menuDetails);
+  editMenu(menuId, menu: Menu) {
+    this.menus.updateMenu(menuId, menu)
   }
 
   deleteMenu(menuId) {
@@ -54,7 +55,7 @@ export class MenusComponent implements OnInit {
   }
 
   openDialog(menuId): void {
-    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+    let dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '250px',
     });
 
@@ -66,4 +67,19 @@ export class MenusComponent implements OnInit {
       }
     });
   }
+
+  openEditDialog(menuId: string, title: string, url: string): void {
+    let dialogRef = this.dialog.open(EditMenuComponent, {
+      width: '300px',
+      data: { title, url }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        console.log('The Edit dialog was closed');
+        this.editMenu(menuId, result);
+      }
+    });
+  }
+
 }
