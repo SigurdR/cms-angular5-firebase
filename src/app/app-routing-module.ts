@@ -8,10 +8,11 @@ import { AdminGuard } from './guards/admin.guard';
 import { SubscriberGuard } from './guards/subscriber.guard';
 
 const routes: Routes = [
-    {path:'', loadChildren: 'app/front-page/front-page.module#FrontPageModule'},
+    {path:'home', loadChildren: 'app/front-page/front-page.module#FrontPageModule'},
     {path:'login', component: LoginPageComponent},
     {path:'admin', loadChildren: 'app/admin-page/admin-page.module#AdminPageModule', canActivate: [AdminGuard]},
     /* lazy loading for admin page */
+    {path: '**', redirectTo: 'home'}
 ]
 
 @NgModule ({
